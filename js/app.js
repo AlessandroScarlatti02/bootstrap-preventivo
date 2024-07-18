@@ -9,7 +9,7 @@ const surnameElement = document.getElementById('surname')
 const emailElement = document.getElementById('email')
 const jobTypeElement = document.getElementById('job-type')
 const promocodeElement = document.getElementById('promo')
-
+let promoFlag = 0
 
 let flag
 
@@ -62,7 +62,7 @@ formElement.addEventListener('submit', function (event) {
     }
     // Controllo job
     const job = jobTypeElement.value
-    if (job == '0') {
+    if (job === '0') {
         jobTypeElement.classList.add('is-invalid')
         flag++
     }
@@ -72,12 +72,15 @@ formElement.addEventListener('submit', function (event) {
     }
     // Controllo Promocode
     const promo = promocodeElement.value
-    if (promo.lenght != 7) {
-        promocodeElement.classList.add('is-invalid')
-        flag++
+    if (promo == 'YHDNU32' || promo == 'JANJC63' || promo == 'PWKCN25' || promo == 'SJDPO96' || promo == 'POCIE24') {
+        promocodeElement.classList.add('is-valid')
+        promoFlag
+        console.log("promotrue")
     }
     else {
-        promocodeElement.classList.add('is-valid')
+        promocodeElement.classList.add('is-invalid')
+        flag++
+        console.log("promofalse")
     }
     // Controllo Privacy Check
     if (check.checked == true) {
