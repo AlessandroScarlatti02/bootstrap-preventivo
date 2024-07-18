@@ -48,18 +48,21 @@
 
 
                     <!-- FORM INSERIMENTO DATI -->
-                    <form class="fw-medium" id="form">
+                    <form class="fw-medium form-floating" id="form">
                         <div class="my-3">
                             <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name">
+                            <div class="invalid-feedback">Inserisci un Nome Valido</div>
                         </div>
                         <div class="my-3">
                             <label for="surname" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="surname">
+                            <div class="invalid-feedback">Inserisci un Cognome Valido</div>
                         </div>
                         <div class="my-3">
                             <label for="email" class="form-label">E-Mail</label>
                             <input type="email" class="form-control" id="email" placeholder="your.email@example.com">
+                            <div class="invalid-feedback">Inserisci una Mail Valida</div>
                         </div>
                         <div class="my-3">
                             <label for="job-type" class="form-label">Tipo di Lavoro</label>
@@ -69,6 +72,7 @@
                                 <option value="f">Sviluppo frontend</option>
                                 <option value="p">Analisi progettuale</option>
                             </select>
+                            <div class="invalid-feedback">Scegli uno tra i tre tipi di lavoro</div>
                         </div>
                         <div class="my-3">
                             <label for="comments" class="form-label">Descrizione
@@ -84,6 +88,8 @@
                                 <span class="fw-light">(facoltativo)</span>
                             </label>
                             <input type="text" class="form-control" id="promo">
+                            <div class="invalid-feedback">Promocode non trovato!</div>
+                            <div class="valid-feedback">Promocode Corretto!</div>
                         </div>
                         <div>
                             <!-- CheckBox Privacy -->
@@ -92,11 +98,17 @@
                                 <label class="form-check-label" for="privacy-check">
                                     Accetto la Privacy Policy
                                 </label>
+                                <div class="invalid-feedback">Devi accettare la privacy</div>
                             </div>
                         </div>
+                        <!-- Controllo degli errori -->
+                        <p class="d-flex justify-content-center fw-bold" style="color: red;">
+                            Controlla gli errori evidenziati in rosso!!</p>
+
                         <!-- Bottone per calcolare il preventivo -->
                         <div class="d-flex between justify-content-around align-items-center ">
                             <button type="submit" class="btn btn-success">Calcola Preventivo</button>
+
                             <!-- Stampa del prezzo finale -->
                             <div>
                                 <p class="fw-bold fs-3 m-0">Prezzo Finale </p>
@@ -105,6 +117,7 @@
                             </div>
                         </div>
                     </form>
+
                 </div>
 
 
