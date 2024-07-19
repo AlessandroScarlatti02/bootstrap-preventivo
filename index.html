@@ -36,11 +36,11 @@
             </div>
         </nav>
     </header>
-
+    <!-- TITOLO -->
     <main>
         <div class="container-fluid mx-lg-5 mb-5 my-3">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-8 mb-sm-4">
                     <div class="h1">Richiesta Preventivo</div>
                     <p class="fs-5 fw-medium">
                         Compila il form per richiedere un preventivo per i nostri servizi di sviluppo.
@@ -93,27 +93,39 @@
                         </div>
                         <div>
                             <!-- CheckBox Privacy -->
-                            <div class="form-check my-3">
-                                <input class=" form-check-input" type="checkbox" id="privacy-check">
-                                <label class="form-check-label" for="privacy-check">
-                                    Accetto la Privacy Policy
-                                </label>
-                                <div class="invalid-feedback">Devi accettare la privacy</div>
+                            <div class="form-check my-3 d-flex flex-wrap">
+                                <div class="me-auto"><input class=" form-check-input" type="checkbox"
+                                        id="privacy-check">
+                                    <label class="form-check-label" for="privacy-check">
+                                        Accetto la Privacy Policy
+                                    </label>
+                                    <div class="invalid-feedback">Devi accettare la privacy</div>
+                                </div>
+                                <!-- Bottone Reset -->
+                                <button type="button" class="btn btn-dark">Reset</button>
                             </div>
                         </div>
                         <!-- Controllo degli errori -->
-                        <p class="d-flex justify-content-center fw-bold" style="color: red;">
-                            Controlla gli errori evidenziati in rosso!!</p>
+                        <div id="error"></div>
+
 
                         <!-- Bottone per calcolare il preventivo -->
-                        <div class="d-flex between justify-content-around align-items-center ">
+                        <div class="d-flex between justify-content-around align-items-center flex-wrap">
                             <button type="submit" class="btn btn-success">Calcola Preventivo</button>
 
                             <!-- Stampa del prezzo finale -->
-                            <div>
-                                <p class="fw-bold fs-3 m-0">Prezzo Finale </p>
-                                <p class="fw-bold fs-3 m-0" id="price">€ 200<span class="fw-light"
-                                        id="decimal">,00</span></p>
+                            <div class="" id="price-block">
+                                <p class="fw-bold fs-3 m-0 " id="title-price">Prezzo Finale
+                                </p>
+                                <p class="fw-bold fs-3 m-0 justify-content-center d-flex">€
+                                    <span id="price">---</span><span class="fw-light">,<span
+                                            id="decimal">--</span></span>
+                                </p>
+                            </div>
+                            <!-- Stampa del prezzo finale Scontato -->
+                            <div id="promo-block">
+
+
                             </div>
                         </div>
                     </form>

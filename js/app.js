@@ -1,5 +1,5 @@
 console.log("Hello World!");
-
+// Recupero Elementi dal Form
 const check = document.getElementById('privacy-check')
 console.log(check);
 const formElement = document.getElementById('form')
@@ -9,9 +9,22 @@ const surnameElement = document.getElementById('surname')
 const emailElement = document.getElementById('email')
 const jobTypeElement = document.getElementById('job-type')
 const promocodeElement = document.getElementById('promo')
-let promoFlag = 0
+const errorElement = document.getElementById('error')
+const priceElement = document.getElementById('price')
+const decimalElement = document.getElementById('decimal')
+const promoBlockElement = document.getElementById('promo-block')
+const priceBlockElement = document.getElementById('price-block')
 
+//Inclusione Flag
+let promoFlag = 0
 let flag
+
+//Variabili per calcolare il prezzo
+const b = 20.50
+const f = 15.30
+const p = 33.60
+let basePrice = 0
+let finalPrice = 0
 
 
 formElement.addEventListener('submit', function (event) {
@@ -45,14 +58,14 @@ formElement.addEventListener('submit', function (event) {
     }
     // Controllo Email
     const email = emailElement.value
-    const emailFlag = 0
+    let emailFlag = 0
     for (let i = 0; i < email.length; i++) {
         const element = email[i];
         if (element === '@') {
             emailFlag++
         }
     }
-    if (email.lenght > 5 && emailFlag != 0) {
+    if (email.length > 5 && emailFlag != 0) {
         emailElement.classList.add('is-valid')
 
     }
@@ -74,12 +87,12 @@ formElement.addEventListener('submit', function (event) {
     const promo = promocodeElement.value
     if (promo == 'YHDNU32' || promo == 'JANJC63' || promo == 'PWKCN25' || promo == 'SJDPO96' || promo == 'POCIE24') {
         promocodeElement.classList.add('is-valid')
-        promoFlag
+        promoFlag = 0
         console.log("promotrue")
     }
     else {
         promocodeElement.classList.add('is-invalid')
-        flag++
+        promoFlag++
         console.log("promofalse")
     }
     // Controllo Privacy Check
@@ -90,8 +103,41 @@ formElement.addEventListener('submit', function (event) {
         check.classList.add('is-invalid')
         flag++
     }
+    //Controllo Se sono stati trovati errori nella compilazione del form e stampa del relativo messaggio
+    if (flag > 0) {
 
-
-    console.log(flag);
+        errorElement.innerHTML = `<p class="d-flex justify-content-center fw-bold" style="color: red;">
+                            Controlla gli errori evidenziati in rosso!!</p>`
+    }
+    else {
+        errorElement.innerHTML = `<p class="d-flex justify-content-center fw-bold" style="color: green;">
+                            Tutti i campi sono stati compilati correttamente!!</p>`
+        //Controllo quale tra i 3 lavori sono stati scelti
+        if (job === 'b') {
+            basePrice = b * 10
+        }
+        else if (job === 'f') {
+            basePrice = f * 10
+        }
+        else {
+            basePrice = p * 10
+        }
+        // Controllo Se è stato inserito un promocode corretto
+        if (promoFlag === 0) {
+            const discount = (basePrice * 25) / 100
+            // Calcolo del prezzo scontato e stampa
+            finalPrice = basePrice - discount
+            finalPrice = finalPrice.toFixed(2)
+            priceBlockElement.classList.add("text-decoration-line-through")
+            promoBlockElement.innerHTML = `<p class="fw-bold fs-3 m-0" style="color: red;">Prezzo Scontato !!</p>
+                                <p class="fw-bold fs-3 m-0 justify-content-center d-flex text-decoration-underline"
+                                    style="color: red;">€ <span>${finalPrice}</span></p>`
+        }
+    }
+    //Stampa del prezzo finale
+    priceElement.innerHTML = basePrice
+    decimalElement.innerHTML = "00"
+    // console.log(basePrice)
+    // console.log(flag);
 
 })
